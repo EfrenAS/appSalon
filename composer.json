@@ -1,0 +1,19 @@
+{
+  "name": "efren/app-salon",
+  "description": "Project PHP 8, MVC, SQL, SASS, Gulp",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "MVC\\": "./",
+      "Controllers\\": "./controllers",
+      "Model\\": "./models"
+    }
+  },
+  "authors": [
+    {
+      "name": "Efren",
+      "email": "50155831+EfrenAS@users.noreply.github.com"
+    }
+  ],
+  "require": {}
+}
