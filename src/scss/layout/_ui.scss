@@ -1,0 +1,55 @@
+@use 'base/variables'as var;
+@use 'base/mixins'as mxs;
+
+.app-container {
+
+  @include mxs.tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 100vh;
+  }
+
+  .image {
+    position: relative;
+    background-image: url(../img/image_1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20rem;
+
+    @include mxs.tablet {
+      height: auto;
+    }
+  }
+
+  .image::after {
+    content: "";
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, var.$oxford_blue, transparent);
+    
+    @include mxs.tablet {
+      height: 100%;
+      width: 100%;
+      right: 0;
+      top: 0;
+      background-image: linear-gradient(to left, var.$oxford_blue, transparent);
+    }
+  }
+  
+  .app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 3rem 0;
+    width: 95%;
+
+    h1 {
+      text-transform: uppercase;
+    }
+  }
+}

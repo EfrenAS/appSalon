@@ -1,0 +1,39 @@
+@use 'base/variables' as var;
+@use 'base/mixins' as mxs;
+
+.form-container {
+  width: 95%;
+  @include mxs.desktop {
+    width: 65%;
+  }
+}
+
+
+.form {
+  padding: 1rem;
+  font-size: var.$large;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    font-weight: var.$bold;
+    margin-bottom: calc(var.$separacion / 5);
+    margin-top: calc(var.$separacion / 2);
+  }
+  
+  input {
+    background-color: var.$white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: calc(var.$separacion / 5);
+    outline: none;
+    transition: background-color .1s ease-in-out;
+
+    &:focus {
+      background-color: var.$verde;
+    }
+  }
+}

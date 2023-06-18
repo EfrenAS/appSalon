@@ -1,0 +1,6 @@
+@use 'base/variables'as var;
+@use 'base/mixins'as mxs;
+
+.button {
+  @include mxs.button (var.$azul, var.$white);
+}

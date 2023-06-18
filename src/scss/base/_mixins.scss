@@ -18,16 +18,17 @@
 }
 
 
-@mixin boton($bgColor, $colorTexto) {
+@mixin button($bgColor, $txtColor) {
     background-color: $bgColor;
     padding: 1.5rem 4rem;
-    color: $colorTexto;
+    color: $txtColor;
     margin-top: 2rem;
     font-size: 2rem;
     font-weight: 400;
     display: inline-block;
     font-weight: 700;
     border: none;
+    border-radius: 0.5rem;
     transition-property: background-color;
     transition-duration: .3s;
     text-align: center;
@@ -43,6 +44,19 @@
         cursor: pointer;
     }
 }
+
+@mixin link($txtColor) {
+    color: $txtColor;
+    font-size: v.$large;
+    font-weight: v.$bold;
+    text-decoration: dashed;
+    transition: color 0.3s ease-in-out;
+    
+    &:hover {
+        color: darken($txtColor, 10%);
+    }
+}
+
 
 @mixin grid($columnas, $espaciado ) {
     display: grid;

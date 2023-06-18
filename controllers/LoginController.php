@@ -2,21 +2,25 @@
 
 namespace Controllers;
 
+use MVC\Router;
+
 class LoginController
 {
-  public static function login()
+  public static function login(Router $router): void
   {
-    echo 'Desde Login';
+    $router->render('auth/login');
   }
 
   public static function logout(): void
   {
-    echo 'Desde Logout';
+    echo 'From Logout';
   }
 
-  public static function forgot(): void
+  public static function forgot(Router$router): void
   {
-    echo 'I forgot my password';
+    $router->render('auth/forgot-password', [
+
+    ]);
   }
 
   public static function recover(): void
@@ -24,7 +28,10 @@ class LoginController
     echo 'I wanna recover my password';
   }
 
-  public static function create () {
-    echo 'Create a new account';
+  public static function create(  Router $router): void
+  {
+    $router->render('auth/create-account', [
+
+    ]);
   }
 }
