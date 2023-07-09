@@ -1,0 +1,12 @@
+@use 'base/variables' as var;
+
+.alert {
+  margin-top: 1rem;
+  font-size: var.$regular;
+  font-weight: var.$bold;
+
+  &.error {
+    color: var.$red;
+  }
+
+}

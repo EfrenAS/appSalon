@@ -2,7 +2,9 @@
 
 namespace Controllers;
 
+use Model\User;
 use MVC\Router;
+use Helpers\Validator;
 
 class LoginController
 {
@@ -16,11 +18,9 @@ class LoginController
     echo 'From Logout';
   }
 
-  public static function forgot(Router$router): void
+  public static function forgot(Router $router): void
   {
-    $router->render('auth/forgot-password', [
-
-    ]);
+    $router->render('auth/forgot-password', []);
   }
 
   public static function recover(): void
@@ -28,10 +28,30 @@ class LoginController
     echo 'I wanna recover my password';
   }
 
-  public static function create(  Router $router): void
+  public static function create(Router $router): void
   {
-    $router->render('auth/create-account', [
+    $user = new User;
+    $alerts = [];
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $user->sincronizar($_POST);
+
+      $alerts = Validator::make($_POST, [
+        'name' => 'required',
+        'lastname' => 'required',
+        'cellphone' => 'required|phone',
+        'email' => 'required|email',
+        'password' => 'required'
+      ]);
+
+      if (empty($alerts)) {
+        echo 'pasaste las validaciones';
+        $user->uniqueMail();
+      }
+    }
+    $router->render('auth/create-account', [
+      'user' => $user,
+      'alerts' => $alerts
     ]);
   }
 }
